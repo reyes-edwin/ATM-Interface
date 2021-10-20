@@ -14,7 +14,7 @@ public class LogIn extends JFrame {
         setLayout(null);
 
         JLabel title = new JLabel("ReyesATM");
-        title.setBounds(30, 50, 122, 28);
+        title.setBounds(30, 50, 132, 28);
         title.setFont(new Font("Roboto", Font.BOLD, 24));
         title.setForeground(Color.white);
         add(title);
@@ -44,61 +44,61 @@ public class LogIn extends JFrame {
         add(pinNumber4);
 
         JLabel one = new JLabel("1");
-        one.setBounds(271, 169, 21, 42);
+        one.setBounds(271, 169, 24, 42);
         one.setFont(new Font("Roboto", Font.BOLD, 36));
         one.setForeground(Color.white);
         add(one);
 
         JLabel two = new JLabel("2");
-        two.setBounds(339, 169, 21, 42);
+        two.setBounds(339, 169, 24, 42);
         two.setFont(new Font("Roboto", Font.BOLD, 36));
         two.setForeground(Color.white);
         add(two);
 
         JLabel three = new JLabel("3");
-        three.setBounds(407, 169, 21, 42);
+        three.setBounds(407, 169, 24, 42);
         three.setFont(new Font("Roboto", Font.BOLD, 36));
         three.setForeground(Color.white);
         add(three);
 
         JLabel four = new JLabel("4");
-        four.setBounds(271, 226, 21, 42);
+        four.setBounds(271, 226, 24, 42);
         four.setFont(new Font("Roboto", Font.BOLD, 36));
         four.setForeground(Color.white);
         add(four);
 
         JLabel five = new JLabel("5");
-        five.setBounds(339, 226, 21, 42);
+        five.setBounds(339, 226, 24, 42);
         five.setFont(new Font("Roboto", Font.BOLD, 36));
         five.setForeground(Color.white);
         add(five);
 
         JLabel six = new JLabel("6");
-        six.setBounds(407, 226, 21, 42);
+        six.setBounds(407, 226, 24, 42);
         six.setFont(new Font("Roboto", Font.BOLD, 36));
         six.setForeground(Color.white);
         add(six);
 
         JLabel seven = new JLabel("7");
-        seven.setBounds(271, 283, 21, 42);
+        seven.setBounds(271, 283, 24, 42);
         seven.setFont(new Font("Roboto", Font.BOLD, 36));
         seven.setForeground(Color.white);
         add(seven);
 
         JLabel eight = new JLabel("8");
-        eight.setBounds(339, 283, 21, 42);
+        eight.setBounds(339, 283, 24, 42);
         eight.setFont(new Font("Roboto", Font.BOLD, 36));
         eight.setForeground(Color.white);
         add(eight);
 
         JLabel nine = new JLabel("9");
-        nine.setBounds(407, 283, 21, 42);
+        nine.setBounds(407, 283, 24, 42);
         nine.setFont(new Font("Roboto", Font.BOLD, 36));
         nine.setForeground(Color.white);
         add(nine);
 
         JLabel zero = new JLabel("0");
-        zero.setBounds(339, 340, 21, 42);
+        zero.setBounds(339, 340, 24, 42);
         zero.setFont(new Font("Roboto", Font.BOLD, 36));
         zero.setForeground(Color.white);
         add(zero);
@@ -108,9 +108,10 @@ public class LogIn extends JFrame {
         button.setFont(new Font("Roboto", Font.BOLD, 18));
         button.setBackground(Color.white);
         button.setFocusable(false);
-
         add(button);
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
     }
 }
