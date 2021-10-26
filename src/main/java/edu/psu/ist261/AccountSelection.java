@@ -7,9 +7,9 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Account extends JFrame {
+public class AccountSelection extends JFrame {
 
-    public Account() {
+    public AccountSelection() {
         setSize(700,530);
         setTitle("Home");
         getContentPane().setBackground(Color.decode("#7199BD"));
@@ -28,15 +28,15 @@ public class Account extends JFrame {
         exit.setForeground(Color.white);
         add(exit);
 
-        InputStream is = Account.class.getClassLoader().getResourceAsStream("Logout.png");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+//        InputStream is = Account.class.getClassLoader().getResourceAsStream("Logout.png");
+//        BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
         Icon icon = new ImageIcon();
         JButton logOut = new JButton(icon);
 
         JLabel description = new JLabel("Select an account");
         description.setBounds(270, 189, 200, 28);
-        description.setFont(new Font("Roboto", Font.BOLD, 20));
+        description.setFont(new Font("Roboto", Font.BOLD, 18));
         description.setForeground(Color.white);
         add(description);
 
