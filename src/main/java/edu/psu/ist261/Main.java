@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-//    	LogIn log = new LogIn();
+        LogIn log = new LogIn();
 //        AccountSelection actt = new AccountSelection();
-        Home home = new Home();
+//        Home home = new Home();
     }
 
 }

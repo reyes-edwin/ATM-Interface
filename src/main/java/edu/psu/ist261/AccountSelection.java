@@ -2,10 +2,9 @@ package edu.psu.ist261;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class AccountSelection extends JFrame {
 
@@ -22,17 +21,21 @@ public class AccountSelection extends JFrame {
         title.setForeground(Color.white);
         add(title);
 
-        JLabel exit = new JLabel("EXIT");
-        exit.setBounds(75, 50, 132, 28);
+        JButton exit = new JButton("EXIT", new ImageIcon(""));
+        exit.setBounds(30, 50, 100, 28);
         exit.setFont(new Font("Roboto", Font.BOLD, 22));
-        exit.setForeground(Color.white);
+        exit.setFocusable(false);
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                LogIn logIn = new LogIn();
+                logIn.getContentPane();
+            }
+        });
         add(exit);
 
-//        InputStream is = Account.class.getClassLoader().getResourceAsStream("Logout.png");
-//        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        Icon icon = new ImageIcon();
-        JButton logOut = new JButton(icon);
 
         JLabel description = new JLabel("Select an account");
         description.setBounds(270, 189, 200, 28);
@@ -59,6 +62,10 @@ public class AccountSelection extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new AccountSelection();
     }
 
 

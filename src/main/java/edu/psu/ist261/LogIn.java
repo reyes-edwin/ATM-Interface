@@ -3,11 +3,14 @@ package edu.psu.ist261;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class LogIn extends JFrame {
 
     public LogIn() {
-        setSize(700,530);
+        setSize(700, 530);
         setTitle("ATM");
         getContentPane().setBackground(Color.decode("#7199BD"));
 
@@ -108,12 +111,22 @@ public class LogIn extends JFrame {
         button.setFont(new Font("Roboto", Font.BOLD, 18));
         button.setBackground(Color.white);
         button.setFocusable(false);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AccountSelection accountSelection = new AccountSelection();
+                accountSelection.getContentPane();
+
+            }
+        });
         add(button);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
     }
+
 }
 
 

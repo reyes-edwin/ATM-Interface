@@ -3,12 +3,12 @@ package edu.psu.ist261;
 import javax.swing.*;
 import java.awt.*;
 
-public class CheckBalance extends Checking {
-     JFrame aframe = new JFrame();
+public class CheckBalance extends Account {
+    JFrame aframe = new JFrame();
 
-     public CheckBalance() {
+    public CheckBalance() {
         super();
-        aframe.setSize(700,530);
+        aframe.setSize(700, 530);
         aframe.setTitle("Home");
         aframe.getContentPane().setBackground(Color.decode("#7199BD"));
 
@@ -26,32 +26,31 @@ public class CheckBalance extends Checking {
         exit.setForeground(Color.white);
         aframe.add(exit);
 
-        JLabel bal = new JLabel("Balance ");
-        bal.setBounds(241, 262, 80, 21);
+        JLabel accountType = new JLabel("Account: ");
+        accountType.setBounds(241, 216, 90, 21);
+        accountType.setFont(new Font("Roboto", Font.BOLD, 18));
+        accountType.setForeground(Color.white);
+        aframe.add(accountType);
+
+        JLabel bal = new JLabel("Balance:");
+        bal.setBounds(241, 262, 90, 21);
         bal.setFont(new Font("Roboto", Font.BOLD, 18));
         bal.setForeground(Color.white);
         aframe.add(bal);
 
-         JLabel amount = new JLabel("$" + getAmount());
-         amount.setBounds(316, 262, 90, 21);
-         amount.setFont(new Font("Roboto", Font.PLAIN, 18));
-         amount.setForeground(Color.white);
-         aframe.add(amount);
+        JLabel amount = new JLabel(" $" + getCheckingAmount());
+        amount.setBounds(316, 262, 90, 21);
+        amount.setFont(new Font("Roboto", Font.PLAIN, 18));
+        amount.setForeground(Color.white);
+        aframe.add(amount);
 
-
-
-
-
-
-         aframe.setResizable(false);
+        aframe.setResizable(false);
         aframe.setVisible(true);
     }
 
     public static void main(String[] args) {
         new CheckBalance();
     }
-
-
 
 
 }
