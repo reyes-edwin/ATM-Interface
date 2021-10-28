@@ -2,10 +2,12 @@ package edu.psu.ist261;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Home extends JFrame {
     public Home() {
-        setSize(700,530);
+        setSize(700, 530);
         setTitle("Home");
         getContentPane().setBackground(Color.decode("#7199BD"));
 
@@ -13,55 +15,72 @@ public class Home extends JFrame {
 
         JLabel title = new JLabel("ReyesATM");
         title.setBounds(540, 50, 132, 28);
-        title.setFont(new Font("Roboto", Font.BOLD, 24));
+        title.setFont(new Font("Helvetica", Font.BOLD, 22));
         title.setForeground(Color.white);
         add(title);
 
-        JLabel exit = new JLabel("EXIT");
-        exit.setBounds(75, 50, 132, 28);
-        exit.setFont(new Font("Roboto", Font.BOLD, 20));
-        exit.setForeground(Color.white);
-        add(exit);
+        ImageIcon icon = new ImageIcon("/Users/edwin/IST261/ATM-Interface/src/main/resources/BackBtn.png");
+        JButton backArrow = new JButton(icon);
+        backArrow.setBounds(30, 46, 40, 40);
+        backArrow.setBorder(null);
+        backArrow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AccountSelection accountSelection = new AccountSelection();
+            }
+        });
+        add(backArrow);
 
-//        InputStream is = Account.class.getClassLoader().getResourceAsStream("Logout.png");
-//        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        Icon icon = new ImageIcon();
-        JButton logOut = new JButton(icon);
+        JButton back = new JButton("Back");
+        back.setBounds(55, 53, 80, 30);
+        back.setFont(new Font("Helvetica", Font.BOLD, 20));
+        back.setForeground(Color.white);
+        back.setBorder(null);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AccountSelection accountSelection = new AccountSelection();
+            }
+        });
+        add(back);
 
         JLabel description = new JLabel("What kind of transaction would you like?");
         description.setBounds(170, 189, 430, 28);
-        description.setFont(new Font("Roboto", Font.BOLD, 18));
+        description.setFont(new Font("Helvetica", Font.BOLD, 20));
         description.setForeground(Color.white);
         add(description);
 
         JButton checking = new JButton("Deposit");
         checking.setBounds(75, 260, 150, 50);
-        checking.setFont(new Font("Roboto", Font.BOLD, 18));
+        checking.setFont(new Font("Helvetica", Font.BOLD, 18));
         checking.setBackground(Color.white);
-        checking.setFocusable(false);
         add(checking);
 
         JButton withdraw = new JButton("Withdraw");
         withdraw.setBounds(275, 260, 150, 50);
-        withdraw.setFont(new Font("Roboto", Font.BOLD, 18));
+        withdraw.setFont(new Font("Helvetica", Font.BOLD, 18));
         withdraw.setBackground(Color.white);
-        withdraw.setFocusable(false);
         add(withdraw);
 
         JButton checkBal = new JButton("Balance");
         checkBal.setBounds(475, 260, 150, 50);
-        checkBal.setFont(new Font("Roboto", Font.BOLD, 18));
+        checkBal.setFont(new Font("Helvetica", Font.BOLD, 18));
         checkBal.setBackground(Color.white);
-        checkBal.setFocusable(false);
+        checkBal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                CheckBalance checkBalance = new CheckBalance();
+            }
+        });
         add(checkBal);
-
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
     }
-
 
 
 }

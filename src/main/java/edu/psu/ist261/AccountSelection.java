@@ -9,23 +9,22 @@ import java.awt.event.ActionListener;
 public class AccountSelection extends JFrame {
 
     public AccountSelection() {
-        setSize(700,530);
-        setTitle("Home");
+        setSize(700, 530);
+        setTitle("Account Selection");
         getContentPane().setBackground(Color.decode("#7199BD"));
 
         setLayout(null);
 
         JLabel title = new JLabel("ReyesATM");
         title.setBounds(540, 50, 132, 28);
-        title.setFont(new Font("Roboto", Font.BOLD, 24));
+        title.setFont(new Font("Helvetica", Font.BOLD, 22));
         title.setForeground(Color.white);
         add(title);
 
-        JButton exit = new JButton("EXIT", new ImageIcon(""));
-        exit.setBounds(30, 50, 100, 28);
-        exit.setFont(new Font("Roboto", Font.BOLD, 22));
-        exit.setFocusable(false);
-
+        ImageIcon icon = new ImageIcon("/Users/edwin/IST261/ATM-Interface/src/main/resources/LogOut.png");
+        JButton exit = new JButton(icon);
+        exit.setBounds(30, 46, 40, 40);
+        exit.setBorder(null);
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,36 +36,59 @@ public class AccountSelection extends JFrame {
         add(exit);
 
 
+        JButton logout = new JButton("Logout");
+        logout.setBounds(55, 53, 100, 30);
+        logout.setFont(new Font("Helvetica", Font.BOLD, 20));
+        logout.setForeground(Color.white);
+        logout.setBorder(null);
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                LogIn log = new LogIn();
+                log.getContentPane();
+            }
+        });
+        add(logout);
+
+
         JLabel description = new JLabel("Select an account");
         description.setBounds(270, 189, 200, 28);
-        description.setFont(new Font("Roboto", Font.BOLD, 18));
+        description.setFont(new Font("Helvetica", Font.BOLD, 20));
         description.setForeground(Color.white);
         add(description);
 
-        JButton checking = new JButton("Checking");
-        checking.setBounds(175, 260, 150, 50);
-        checking.setFont(new Font("Roboto", Font.BOLD, 18));
-        checking.setBackground(Color.white);
-        checking.setFocusable(false);
-        add(checking);
+        JButton checking1 = new JButton("Checking");
+        checking1.setBounds(175, 260, 150, 50);
+        checking1.setFont(new Font("Helvetica", Font.BOLD, 18));
+        checking1.setBackground(Color.white);
+        checking1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                Home homeScreen = new Home();
+                homeScreen.getContentPane();
+            }
+        });
+        add(checking1);
 
-        JButton savings = new JButton("Checking");
+        JButton savings = new JButton("Savings");
         savings.setBounds(375, 260, 150, 50);
-        savings.setFont(new Font("Roboto", Font.BOLD, 18));
+        savings.setFont(new Font("Helvetica", Font.BOLD, 18));
         savings.setBackground(Color.white);
-        savings.setFocusable(false);
+        savings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                Home home = new Home();
+                home.getContentPane();
+            }
+        });
         add(savings);
-
-
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new AccountSelection();
-    }
-
 
 }

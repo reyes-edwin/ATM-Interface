@@ -1,55 +1,53 @@
 package edu.psu.ist261;
 
 public class Account {
-    private double checkingAmount = 4654.34;
-    private double savingsAmount = 8239.87;
-    private String checking = "Primary Checking";
-    private String savings = "Savings";
+    private double checking = 7043.45;
+    private double savings = 20392.23;
+    private String primaryCheck = "Primary Checking";
+    private String saving = "Savings";
 
-    public Account() {}
+    public Account() {
+    }
 
-
-    public Account(double checkingAmount, double savingsAmount, String checking, String savings) {
-        this.checkingAmount = checkingAmount;
-        this.savingsAmount = savingsAmount;
+    public Account(double checking, double savings, String primaryCheck, String saving) {
         this.checking = checking;
         this.savings = savings;
+        this.primaryCheck = primaryCheck;
+        this.saving = saving;
     }
 
-    public double getCheckingAmount() {
-        return checkingAmount;
-    }
-
-    public void setCheckingAmount(double checkingAmount) {
-        this.checkingAmount = checkingAmount;
-    }
-
-    public double getSavingsAmount() {
-        return savingsAmount;
-    }
-
-    public void setSavingsAmount(double savingsAmount) {
-        this.savingsAmount = savingsAmount;
-    }
-
-    public String getChecking() {
+    public double getChecking() {
         return checking;
     }
 
-    public void setChecking(String checking) {
+    public void setChecking(double checking) {
         this.checking = checking;
     }
 
-    public String getSavings() {
+    public double getSavings() {
         return savings;
     }
 
-    public void setSavings(String savings) {
+    public void setSavings(double savings) {
         this.savings = savings;
     }
 
-    @Override
-    public String toString() {
-        return "" + checkingAmount;
+    public String getPrimaryCheck() {
+        return primaryCheck;
     }
+
+    public void setPrimaryCheck(String primaryCheck) {
+        this.primaryCheck = primaryCheck;
+    }
+
+    public String getSaving() {
+        return saving;
+    }
+
+    public void setSaving(String saving) {
+        this.saving = saving;
+    }
+
 }
+
+
