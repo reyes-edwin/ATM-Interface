@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Home extends JFrame {
-    public Home() {
+public class CheckingHome extends JFrame {
+    public CheckingHome() {
         setSize(700, 530);
         setTitle("Home");
         getContentPane().setBackground(Color.decode("#7199BD"));
@@ -72,6 +72,7 @@ public class Home extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                CheckingBal bal = new CheckingBal();
             }
         });
         add(checkBal);
@@ -79,7 +80,10 @@ public class Home extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+
     }
 
-
+    public static void main(String[] args) {
+        new CheckingHome();
+    }
 }

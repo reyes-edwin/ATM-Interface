@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class AccountSelection extends JFrame {
+public class AccountType extends JFrame {
 
-    public AccountSelection() {
+    public AccountType() {
         setSize(700, 530);
         setTitle("Account Selection");
         getContentPane().setBackground(Color.decode("#7199BD"));
@@ -21,6 +21,7 @@ public class AccountSelection extends JFrame {
         title.setForeground(Color.white);
         add(title);
 
+        // icon not working on others pc. DO byte array
         ImageIcon icon = new ImageIcon("/Users/edwin/IST261/ATM-Interface/src/main/resources/LogOut.png");
         JButton exit = new JButton(icon);
         exit.setBounds(30, 46, 40, 40);
@@ -66,8 +67,7 @@ public class AccountSelection extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                Home homeScreen = new Home();
-                homeScreen.getContentPane();
+                CheckingHome account = new CheckingHome();
             }
         });
         add(checking1);
@@ -80,8 +80,7 @@ public class AccountSelection extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                Home home = new Home();
-                home.getContentPane();
+
             }
         });
         add(savings);

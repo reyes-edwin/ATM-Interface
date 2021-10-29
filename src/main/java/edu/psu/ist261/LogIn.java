@@ -115,8 +115,8 @@ public class LogIn extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                AccountSelection accountSelection = new AccountSelection();
-                accountSelection.getContentPane();
+                AccountType accountType = new AccountType();
+                accountType.getContentPane();
 
             }
         });
