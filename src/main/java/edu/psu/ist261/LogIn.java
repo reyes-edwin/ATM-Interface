@@ -110,7 +110,6 @@ public class LogIn extends JFrame {
         button.setBounds(271, 400, 157, 50);
         button.setFont(new Font("Helvetica", Font.BOLD, 18));
         button.setBackground(Color.white);
-        button.setFocusable(false);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

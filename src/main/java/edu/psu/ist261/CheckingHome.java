@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CheckingHome extends JFrame {
+
     public CheckingHome() {
         setSize(700, 530);
         setTitle("Home");
@@ -62,6 +63,13 @@ public class CheckingHome extends JFrame {
         withdraw.setBounds(275, 260, 150, 50);
         withdraw.setFont(new Font("Helvetica", Font.BOLD, 18));
         withdraw.setBackground(Color.white);
+        withdraw.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                CheckingWithdraw withdraw = new CheckingWithdraw();
+            }
+        });
         add(withdraw);
 
         JButton checkBal = new JButton("Balance");
@@ -76,6 +84,17 @@ public class CheckingHome extends JFrame {
             }
         });
         add(checkBal);
+
+        JButton logout = new JButton("LogOut");
+        logout.setBounds(554, 430, 100, 50);
+        logout.setFont(new Font("Helvetica", Font.BOLD, 20));
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LogoutConfirmation logoutConfirmation = new LogoutConfirmation();
+            }
+        });
+        add(logout);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
