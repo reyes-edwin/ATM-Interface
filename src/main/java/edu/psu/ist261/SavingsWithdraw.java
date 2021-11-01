@@ -6,10 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class CheckingWithdraw extends CheckingAccount {
+public class SavingsWithdraw extends SavingsAccount {
     JFrame aframe = new JFrame();
 
-    public CheckingWithdraw() {
+    public SavingsWithdraw() {
         super();
         aframe.setSize(700, 530);
         aframe.setTitle("Balance");
@@ -31,7 +31,7 @@ public class CheckingWithdraw extends CheckingAccount {
             @Override
             public void actionPerformed(ActionEvent e) {
                 aframe.setVisible(false);
-                CheckingHome checkingHome = new CheckingHome();
+                SavingsHome home = new SavingsHome();
             }
         });
         aframe.add(backArrow);
@@ -44,7 +44,7 @@ public class CheckingWithdraw extends CheckingAccount {
             @Override
             public void actionPerformed(ActionEvent e) {
                 aframe.setVisible(false);
-                CheckingHome checkingHome = new CheckingHome();
+                SavingsHome home = new SavingsHome();
             }
         });
         aframe.add(back);

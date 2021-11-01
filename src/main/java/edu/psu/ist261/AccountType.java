@@ -80,6 +80,7 @@ public class AccountType extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                SavingsHome saving = new SavingsHome();
 
             }
         });

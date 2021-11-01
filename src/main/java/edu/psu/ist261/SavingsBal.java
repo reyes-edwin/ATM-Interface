@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CheckingBal extends CheckingAccount {
+public class SavingsBal extends SavingsAccount {
     JFrame aframe = new JFrame();
 
-    public CheckingBal() {
+    public SavingsBal() {
         super();
         aframe.setSize(700, 530);
         aframe.setTitle("Balance");
@@ -30,7 +30,7 @@ public class CheckingBal extends CheckingAccount {
             @Override
             public void actionPerformed(ActionEvent e) {
                 aframe.setVisible(false);
-                CheckingHome checkingHome = new CheckingHome();
+                SavingsHome home = new SavingsHome();
             }
         });
         aframe.add(backArrow);
@@ -42,8 +42,8 @@ public class CheckingBal extends CheckingAccount {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               aframe.setVisible(false);
-                CheckingHome checkingHome = new CheckingHome();
+                aframe.setVisible(false);
+                SavingsHome home = new SavingsHome();
             }
         });
         aframe.add(back);
@@ -71,7 +71,6 @@ public class CheckingBal extends CheckingAccount {
         amount.setFont(new Font("Helvetica", Font.PLAIN, 18));
         amount.setForeground(Color.white);
         aframe.add(amount);
-
 
 
         aframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

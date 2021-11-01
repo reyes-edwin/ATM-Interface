@@ -5,9 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CheckingHome extends JPanel {
+public class SavingsHome extends JPanel {
     JFrame jFrame = new JFrame();
-    public CheckingHome() {
+
+    public SavingsHome() {
         jFrame.setSize(700, 530);
         jFrame.setTitle("Home");
         jFrame.getContentPane().setBackground(Color.decode("#7199BD"));
@@ -66,7 +67,7 @@ public class CheckingHome extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                CheckingWithdraw withdraw = new CheckingWithdraw();
+                SavingsWithdraw withdraw = new SavingsWithdraw();
             }
         });
         jFrame.add(withdraw);
@@ -79,7 +80,7 @@ public class CheckingHome extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                CheckingBal bal = new CheckingBal();
+                SavingsBal bal = new SavingsBal();
             }
         });
         jFrame.add(checkBal);
@@ -104,9 +105,5 @@ public class CheckingHome extends JPanel {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setResizable(false);
         jFrame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new CheckingHome();
     }
 }
