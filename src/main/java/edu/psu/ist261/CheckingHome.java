@@ -40,7 +40,7 @@ public class CheckingHome extends JPanel {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 AccountType accountType = new AccountType();
             }
         });
@@ -65,7 +65,7 @@ public class CheckingHome extends JPanel {
         withdraw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 CheckingWithdraw withdraw = new CheckingWithdraw();
             }
         });
@@ -78,7 +78,7 @@ public class CheckingHome extends JPanel {
         checkBal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 CheckingBal bal = new CheckingBal();
             }
         });

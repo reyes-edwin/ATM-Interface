@@ -17,7 +17,7 @@ public class SavingsWithdraw extends SavingsAccount {
         aframe.getContentPane().setBackground(Color.decode("#7199BD"));
         aframe.setLayout(null);
 
-        apanel.setSize(637, 300);
+        apanel.setSize(637, 400);
         apanel.setLayout(null);
         apanel.setBackground(Color.decode("#7199BD"));
 
@@ -28,10 +28,11 @@ public class SavingsWithdraw extends SavingsAccount {
         title.setForeground(Color.white);
         aframe.add(title);
 
-        ImageIcon icon = new ImageIcon("/Users/edwin/IST261/ATM-Interface/src/main/resources/BackBtn.png");
+        ImageIcon icon = new ImageIcon("C:\\Users\\reyes\\OneDrive\\Desktop\\IST261\\ATM-Interface\\src\\main\\resources\\BackBtn.png");
         JButton backArrow = new JButton(icon);
         backArrow.setBounds(30, 46, 40, 40);
         backArrow.setBorder(null);
+        backArrow.setBackground(null);
         backArrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,6 +46,7 @@ public class SavingsWithdraw extends SavingsAccount {
         back.setBounds(55, 53, 80, 30);
         back.setFont(new Font("Helvetica", Font.BOLD, 20));
         back.setForeground(Color.white);
+        back.setBackground(null);
         back.setBorder(null);
         back.addActionListener(new ActionListener() {
             @Override
@@ -123,12 +125,11 @@ public class SavingsWithdraw extends SavingsAccount {
         other.setFont(new Font("Helvetica", Font.PLAIN, 18));
         other.setBackground(Color.white);
         apanel.add(other);
-
-
+        apanel.setVisible(true);
+        aframe.add(apanel);
         aframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         aframe.setResizable(false);
         aframe.setVisible(true);
-        apanel.setVisible(true);
     }
 
     public static void main(String[] args) {

@@ -27,7 +27,7 @@ public class SavingsHome extends JPanel {
         backArrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 AccountType accountType = new AccountType();
             }
         });
@@ -41,7 +41,7 @@ public class SavingsHome extends JPanel {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 AccountType accountType = new AccountType();
             }
         });
@@ -66,7 +66,7 @@ public class SavingsHome extends JPanel {
         withdraw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 SavingsWithdraw withdraw = new SavingsWithdraw();
             }
         });
@@ -79,14 +79,14 @@ public class SavingsHome extends JPanel {
         checkBal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                jFrame.setVisible(false);
                 SavingsBal bal = new SavingsBal();
             }
         });
         jFrame.add(checkBal);
 
         JButton logout = new JButton("LogOut");
-        logout.setBounds(554, 430, 100, 50);
+        logout.setBounds(530, 410, 120, 50);
         logout.setFont(new Font("Helvetica", Font.BOLD, 20));
         logout.addActionListener(new ActionListener() {
             @Override
@@ -105,5 +105,9 @@ public class SavingsHome extends JPanel {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setResizable(false);
         jFrame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new SavingsHome();
     }
 }
