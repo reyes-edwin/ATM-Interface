@@ -20,24 +20,13 @@ public class SavingsHome extends JPanel {
         title.setForeground(Color.white);
         jFrame.add(title);
 
-        ImageIcon icon = new ImageIcon("/Users/edwin/IST261/ATM-Interface/src/main/resources/BackBtn.png");
-        JButton backArrow = new JButton(icon);
-        backArrow.setBounds(30, 46, 40, 40);
-        backArrow.setBorder(null);
-        backArrow.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jFrame.setVisible(false);
-                AccountType accountType = new AccountType();
-            }
-        });
-        jFrame.add(backArrow);
-
         JButton back = new JButton("Back");
-        back.setBounds(55, 53, 80, 30);
+        back.setBounds(30, 53, 80, 30);
         back.setFont(new Font("Helvetica", Font.BOLD, 20));
         back.setForeground(Color.white);
+        back.setFocusable(false);
         back.setBorder(null);
+        back.setBackground(null);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,7 +37,7 @@ public class SavingsHome extends JPanel {
         jFrame.add(back);
 
         JLabel description = new JLabel("What kind of transaction would you like?");
-        description.setBounds(170, 189, 430, 28);
+        description.setBounds(150, 189, 430, 28);
         description.setFont(new Font("Helvetica", Font.BOLD, 20));
         description.setForeground(Color.white);
         jFrame.add(description);
@@ -57,12 +46,14 @@ public class SavingsHome extends JPanel {
         checking.setBounds(75, 260, 150, 50);
         checking.setFont(new Font("Helvetica", Font.BOLD, 18));
         checking.setBackground(Color.white);
+        checking.setFocusable(false);
         jFrame.add(checking);
 
         JButton withdraw = new JButton("Withdraw");
         withdraw.setBounds(275, 260, 150, 50);
         withdraw.setFont(new Font("Helvetica", Font.BOLD, 18));
         withdraw.setBackground(Color.white);
+        withdraw.setFocusable(false);
         withdraw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,6 +67,7 @@ public class SavingsHome extends JPanel {
         checkBal.setBounds(475, 260, 150, 50);
         checkBal.setFont(new Font("Helvetica", Font.BOLD, 18));
         checkBal.setBackground(Color.white);
+        checkBal.setFocusable(false);
         checkBal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,6 +80,8 @@ public class SavingsHome extends JPanel {
         JButton logout = new JButton("LogOut");
         logout.setBounds(530, 410, 120, 50);
         logout.setFont(new Font("Helvetica", Font.BOLD, 20));
+        logout.setBackground(Color.white);
+        logout.setFocusable(false);
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

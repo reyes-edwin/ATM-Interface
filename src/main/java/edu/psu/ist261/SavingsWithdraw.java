@@ -8,19 +8,16 @@ import java.util.Random;
 
 public class SavingsWithdraw extends SavingsAccount {
     JFrame aframe = new JFrame();
-    JPanel apanel = new JPanel();
+    JPanel selection = new JPanel();
+    JPanel confirmation = new JPanel();
 
     public SavingsWithdraw() {
         super();
+//        JFRAME GOES HERE
         aframe.setSize(700, 530);
         aframe.setTitle("Balance");
         aframe.getContentPane().setBackground(Color.decode("#7199BD"));
         aframe.setLayout(null);
-
-        apanel.setSize(637, 400);
-        apanel.setLayout(null);
-        apanel.setBackground(Color.decode("#7199BD"));
-
 
         JLabel title = new JLabel("ReyesATM");
         title.setBounds(540, 50, 132, 28);
@@ -28,108 +25,149 @@ public class SavingsWithdraw extends SavingsAccount {
         title.setForeground(Color.white);
         aframe.add(title);
 
-        ImageIcon icon = new ImageIcon("C:\\Users\\reyes\\OneDrive\\Desktop\\IST261\\ATM-Interface\\src\\main\\resources\\BackBtn.png");
-        JButton backArrow = new JButton(icon);
-        backArrow.setBounds(30, 46, 40, 40);
-        backArrow.setBorder(null);
-        backArrow.setBackground(null);
-        backArrow.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                aframe.setVisible(false);
-                SavingsHome home = new SavingsHome();
-            }
-        });
-        aframe.add(backArrow);
-
-        JButton back = new JButton("Home");
-        back.setBounds(55, 53, 80, 30);
+        JButton back = new JButton("Back");
+        back.setBounds(30, 53, 90, 30);
         back.setFont(new Font("Helvetica", Font.BOLD, 20));
-        back.setForeground(Color.white);
-        back.setBackground(null);
-        back.setBorder(null);
+        back.setFocusable(false);
+        back.setBackground(Color.white);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 aframe.setVisible(false);
-                SavingsHome home = new SavingsHome();
+                SavingsHome savingsHome = new SavingsHome();
             }
         });
         aframe.add(back);
 
+        aframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        aframe.setResizable(false);
+        aframe.setVisible(true);
+
+//        JPANEL GOES HERE
+        selection.setLayout(null);
+        selection.setBounds(44, 110, 605, 344);
+        selection.setBackground(Color.decode("#7199BD"));
+
+        //        Second JPANEL
+
+        confirmation.setLayout(null);
+        confirmation.setBounds(44, 110, 605, 344);
+        confirmation.setBackground(Color.decode("#7199BD"));
+
         JLabel type = new JLabel(getType() + ":");
-        type.setBounds(55, 131, 180, 23);
+        type.setBounds(30, 5, 180, 23);
         type.setFont(new Font("Helvetica", Font.BOLD, 20));
         type.setForeground(Color.white);
-        apanel.add(type);
+        selection.add(type);
 
         Random random = new Random();
         String accountNum = String.format("%09d", random.nextInt(1000000000));
 
         JLabel acctNum = new JLabel(accountNum);
-        acctNum.setBounds(55, 162, 100, 23);
+        acctNum.setBounds(30, 43, 100, 23);
         acctNum.setFont(new Font("Helvetica", Font.PLAIN, 20));
         acctNum.setForeground(Color.white);
-        apanel.add(acctNum);
+        selection.add(acctNum);
 
         JLabel bal = new JLabel("$" + getBalance());
-        bal.setBounds(536, 131, 180, 23);
+        bal.setBounds(485, 5, 90, 23);
         bal.setFont(new Font("Helvetica", Font.PLAIN, 20));
         bal.setForeground(Color.white);
-        apanel.add(bal);
+        selection.add(bal);
 
         JLabel description = new JLabel("Balance");
-        description.setBounds(548, 162, 75, 23);
+        description.setBounds(500, 43, 75, 23);
         description.setFont(new Font("Helvetica", Font.PLAIN, 20));
         description.setForeground(Color.white);
-        apanel.add(description);
+        selection.add(description);
 
         JButton twenty = new JButton("$20");
-        twenty.setBounds(55, 235, 150, 50);
+        twenty.setBounds(30, 121, 150, 50);
         twenty.setFont(new Font("Helvetica", Font.PLAIN, 18));
         twenty.setBackground(Color.white);
+        twenty.setFocusable(false);
         twenty.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                selection.setVisible(false);
+                back.setVisible(false);
+                JLabel text = new JLabel("Withdraw " + twenty.getText() + " from " + getType() + "?");
+                text.setForeground(Color.white);
+                text.setFont(new Font("Helvetica", Font.BOLD, 20));
+                text.setBounds(163, 90, 280, 23);
+                confirmation.add(text);
+
+                JButton yes = new JButton("Yes");
+                yes.setBounds(128, 150, 150, 50);
+                yes.setFont(new Font("Helvetica", Font.BOLD, 18));
+                yes.setBackground(Color.white);
+                yes.setFocusable(false);
+                confirmation.add(yes);
+
+                JButton no = new JButton("No");
+                no.setBounds(328, 150, 150, 50);
+                no.setFont(new Font("Helvetica", Font.BOLD, 18));
+                no.setBackground(Color.white);
+                no.setFocusable(false);
+                no.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        confirmation.setVisible(false);
+                        selection.setVisible(true);
+                        back.setVisible(true);
+                    }
+                });
+                confirmation.add(no);
+
+
 
             }
         });
-        apanel.add(twenty);
+        selection.add(twenty);
 
         JButton forty = new JButton("$40");
-        forty.setBounds(270, 235, 150, 50);
+        forty.setBounds(228, 121, 150, 50);
         forty.setFont(new Font("Helvetica", Font.PLAIN, 18));
         forty.setBackground(Color.white);
-        apanel.add(forty);
+        forty.setFocusable(false);
+        selection.add(forty);
 
         JButton sixty = new JButton("$60");
-        sixty.setBounds(470, 235, 150, 50);
+        sixty.setBounds(425, 121, 150, 50);
         sixty.setFont(new Font("Helvetica", Font.PLAIN, 18));
         sixty.setBackground(Color.white);
-        apanel.add(sixty);
+        sixty.setFocusable(false);
+        selection.add(sixty);
 
         JButton eighty = new JButton("$80");
-        eighty.setBounds(55, 319, 150, 50);
+        eighty.setBounds(30, 206, 150, 50);
         eighty.setFont(new Font("Helvetica", Font.PLAIN, 18));
         eighty.setBackground(Color.white);
-        apanel.add(eighty);
+        eighty.setFocusable(false);
+        selection.add(eighty);
 
         JButton oneHundred = new JButton("$100");
-        oneHundred.setBounds(270, 319, 150, 50);
+        oneHundred.setBounds(228, 206, 150, 50);
         oneHundred.setFont(new Font("Helvetica", Font.PLAIN, 18));
         oneHundred.setBackground(Color.white);
-        apanel.add(oneHundred);
+        oneHundred.setFocusable(false);
+        selection.add(oneHundred);
 
         JButton other = new JButton("other");
-        other.setBounds(470, 319, 150, 50);
+        other.setBounds(425, 206, 150, 50);
         other.setFont(new Font("Helvetica", Font.PLAIN, 18));
         other.setBackground(Color.white);
-        apanel.add(other);
-        apanel.setVisible(true);
-        aframe.add(apanel);
-        aframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        aframe.setResizable(false);
-        aframe.setVisible(true);
+        other.setFocusable(false);
+        selection.add(other);
+
+        selection.setVisible(true);
+        confirmation.setVisible(true);
+        aframe.add(selection);
+        aframe.add(confirmation);
+
+
+
+
     }
 
     public static void main(String[] args) {
