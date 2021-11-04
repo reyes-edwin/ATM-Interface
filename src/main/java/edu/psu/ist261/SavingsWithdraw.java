@@ -10,12 +10,13 @@ public class SavingsWithdraw extends SavingsAccount {
     JFrame aframe = new JFrame();
     JPanel selection = new JPanel();
     JPanel confirmation = new JPanel();
+    JPanel status = new JPanel();
 
     public SavingsWithdraw() {
         super();
 //        JFRAME GOES HERE
         aframe.setSize(700, 530);
-        aframe.setTitle("Balance");
+        aframe.setTitle("Withdraw");
         aframe.getContentPane().setBackground(Color.decode("#7199BD"));
         aframe.setLayout(null);
 
@@ -54,6 +55,11 @@ public class SavingsWithdraw extends SavingsAccount {
         confirmation.setBounds(44, 110, 605, 344);
         confirmation.setBackground(Color.decode("#7199BD"));
 
+//        Third JPANEL
+        status.setLayout(null);
+        status.setBounds(44, 110, 605, 344);
+        status.setBackground(Color.decode("#7199BD"));
+
         JLabel type = new JLabel(getType() + ":");
         type.setBounds(30, 5, 180, 23);
         type.setFont(new Font("Helvetica", Font.BOLD, 20));
@@ -81,7 +87,7 @@ public class SavingsWithdraw extends SavingsAccount {
         description.setForeground(Color.white);
         selection.add(description);
 
-        JButton twenty = new JButton("$20");
+        JButton twenty = new JButton("20");
         twenty.setBounds(30, 121, 150, 50);
         twenty.setFont(new Font("Helvetica", Font.PLAIN, 18));
         twenty.setBackground(Color.white);
@@ -91,6 +97,7 @@ public class SavingsWithdraw extends SavingsAccount {
             public void actionPerformed(ActionEvent e) {
                 selection.setVisible(false);
                 back.setVisible(false);
+
                 JLabel text = new JLabel("Withdraw " + twenty.getText() + " from " + getType() + "?");
                 text.setForeground(Color.white);
                 text.setFont(new Font("Helvetica", Font.BOLD, 20));
@@ -102,6 +109,37 @@ public class SavingsWithdraw extends SavingsAccount {
                 yes.setFont(new Font("Helvetica", Font.BOLD, 18));
                 yes.setBackground(Color.white);
                 yes.setFocusable(false);
+                yes.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        confirmation.setVisible(false);
+                        back.setVisible(true);
+                        back.setText("Home");
+
+
+                        JLabel update = new JLabel("$" + twenty.getText() + " has been withdraw.");
+                        update.setForeground(Color.white);
+                        update.setFont(new Font("Helvetica", Font.PLAIN, 20));
+                        update.setBounds(200, 130, 280, 23);
+                        status.add(update);
+
+                        int textToInt = Integer.parseInt(twenty.getText());
+                        double updatedBal = getBalance() - textToInt;
+
+                        JLabel newBal  = new JLabel("Remaining balance: ");
+                        newBal.setForeground(Color.white);
+                        newBal.setFont(new Font("Helvetica", Font.PLAIN, 20));
+                        newBal.setBounds(200, 160, 300, 23);
+                        status.add(newBal);
+
+                        JLabel amount  = new JLabel("$"+ updatedBal);
+                        amount.setForeground(Color.white);
+                        amount.setFont(new Font("Helvetica", Font.BOLD, 20));
+                        amount.setBounds(380, 160, 100, 23);
+                        status.add(amount);
+
+                    }
+                });
                 confirmation.add(yes);
 
                 JButton no = new JButton("No");
@@ -112,15 +150,11 @@ public class SavingsWithdraw extends SavingsAccount {
                 no.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        confirmation.setVisible(false);
                         selection.setVisible(true);
                         back.setVisible(true);
                     }
                 });
                 confirmation.add(no);
-
-
-
             }
         });
         selection.add(twenty);
@@ -162,12 +196,10 @@ public class SavingsWithdraw extends SavingsAccount {
 
         selection.setVisible(true);
         confirmation.setVisible(true);
+        status.setVisible(true);
         aframe.add(selection);
         aframe.add(confirmation);
-
-
-
-
+        aframe.add(status);
     }
 
     public static void main(String[] args) {
