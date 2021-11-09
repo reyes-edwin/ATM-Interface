@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class SavingsWithdraw extends SavingsAccount {
+public class SavingsWithdraw extends Account {
     JFrame aframe = new JFrame();
     JPanel selection = new JPanel();
     JPanel confirmation = new JPanel();
@@ -60,7 +60,7 @@ public class SavingsWithdraw extends SavingsAccount {
         status.setBounds(44, 110, 605, 344);
         status.setBackground(Color.decode("#7199BD"));
 
-        JLabel type = new JLabel(getType() + ":");
+        JLabel type = new JLabel(AccountType.Savings.toString());
         type.setBounds(30, 5, 180, 23);
         type.setFont(new Font("Helvetica", Font.BOLD, 20));
         type.setForeground(Color.white);
@@ -98,7 +98,7 @@ public class SavingsWithdraw extends SavingsAccount {
                 selection.setVisible(false);
                 back.setVisible(false);
 
-                JLabel text = new JLabel("Withdraw " + twenty.getText() + " from " + getType() + "?");
+                JLabel text = new JLabel("Withdraw " + twenty.getText() + " from " + AccountType.Savings.toString() + "?");
                 text.setForeground(Color.white);
                 text.setFont(new Font("Helvetica", Font.BOLD, 20));
                 text.setBounds(163, 90, 280, 23);
@@ -123,8 +123,8 @@ public class SavingsWithdraw extends SavingsAccount {
                         update.setBounds(200, 130, 280, 23);
                         status.add(update);
 
-                        int textToInt = Integer.parseInt(twenty.getText());
-                        double updatedBal = getBalance() - textToInt;
+                        withdraw(Integer.parseInt(twenty.getText()));
+
 
                         JLabel newBal  = new JLabel("Remaining balance: ");
                         newBal.setForeground(Color.white);
@@ -132,12 +132,11 @@ public class SavingsWithdraw extends SavingsAccount {
                         newBal.setBounds(200, 160, 300, 23);
                         status.add(newBal);
 
-                        JLabel amount  = new JLabel("$"+ updatedBal);
+                        JLabel amount  = new JLabel("$"+ getBalance());
                         amount.setForeground(Color.white);
                         amount.setFont(new Font("Helvetica", Font.BOLD, 20));
                         amount.setBounds(380, 160, 100, 23);
                         status.add(amount);
-
                     }
                 });
                 confirmation.add(yes);

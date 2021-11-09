@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SavingsBal extends SavingsAccount {
+public class SavingsBal extends Account {
     JFrame aframe = new JFrame();
 
     public SavingsBal() {
@@ -54,7 +54,7 @@ public class SavingsBal extends SavingsAccount {
         accountType.setForeground(Color.white);
         aframe.add(accountType);
 
-        JLabel checking = new JLabel(getType());
+        JLabel checking = new JLabel(AccountType.Savings.toString());
         checking.setBounds(314, 219, 150, 23);
         checking.setFont(new Font("Helvetica", Font.PLAIN, 18));
         checking.setForeground(Color.white);
@@ -71,7 +71,6 @@ public class SavingsBal extends SavingsAccount {
         amount.setFont(new Font("Helvetica", Font.PLAIN, 18));
         amount.setForeground(Color.white);
         aframe.add(amount);
-
 
         aframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         aframe.setResizable(false);

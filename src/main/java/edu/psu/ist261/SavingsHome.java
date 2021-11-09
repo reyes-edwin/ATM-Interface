@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class SavingsHome extends JPanel {
     JFrame jFrame = new JFrame();
+    JPanel jPanel = new JPanel();
 
     public SavingsHome() {
         jFrame.setSize(700, 530);
@@ -99,6 +100,7 @@ public class SavingsHome extends JPanel {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setResizable(false);
         jFrame.setVisible(true);
+        jPanel.setVisible(true);
     }
 
     public static void main(String[] args) {
