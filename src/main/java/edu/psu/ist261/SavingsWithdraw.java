@@ -27,7 +27,7 @@ public class SavingsWithdraw extends SavingsAccount {
         aframe.add(title);
 
         JButton back = new JButton("Back");
-        back.setBounds(30, 53, 90, 30);
+        back.setBounds(30, 53, 90, 40);
         back.setFont(new Font("Helvetica", Font.BOLD, 20));
         back.setFocusable(false);
         back.setBackground(Color.white);
