@@ -1,18 +1,17 @@
 package edu.psu.ist261;
-
 public class Account {
 
-    enum AccountType {
+    enum Type {
         Savings,
         Checking
     }
 
-    private double balance =  4282.29;
+    private double balance;
+    private Type accountType;
 
-    public Account() {}
-
-    public Account(double balance) {
+    public Account(double balance, Type accountType) {
         this.balance = balance;
+        this.accountType = accountType;
     }
 
     public double withdraw(double amount) {
@@ -28,9 +27,16 @@ public class Account {
         return balance;
     }
 
+    public Type getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(Type accountType) {
+        this.accountType = accountType;
+    }
+
     @Override
     public String toString() {
         return  "" + balance;
     }
-
 }
