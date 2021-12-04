@@ -72,7 +72,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>edu.psu.ist261.Main</mainClass>
+							<mainClass>edu.psu.ist261.view.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

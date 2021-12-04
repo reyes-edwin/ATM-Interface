@@ -1,7 +1,11 @@
-package edu.psu.ist261;
+package edu.psu.ist261.model;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Account {
 
-    enum Type {
+    public enum Type {
         Savings,
         Checking
     }
@@ -35,8 +39,5 @@ public class Account {
         this.accountType = accountType;
     }
 
-    @Override
-    public String toString() {
-        return  "" + balance;
-    }
+
 }

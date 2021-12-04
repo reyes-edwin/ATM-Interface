@@ -1,15 +1,15 @@
-package edu.psu.ist261;
+package edu.psu.ist261.view;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class ATMFrame extends JFrame {
 
-    public MainFrame() {
+    public ATMFrame() {
         setTitle("ReyesATM");
         setSize(700, 560);
         setLayout(null);
-        getContentPane().setBackground(Color.decode("#626C90"));
+        getContentPane().setBackground(Color.decode("#FFFFFF"));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
