@@ -1,7 +1,6 @@
 package edu.psu.ist261.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.swing.*;
 
 public class Account {
 
@@ -19,11 +18,15 @@ public class Account {
     }
 
     public double withdraw(double amount) {
-        balance -= amount;
+        if (amount > balance) {
+            JOptionPane.showMessageDialog(null, "Insufficient amount", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            balance -= amount;
+        }
         return amount;
     }
 
-    public void deposit(double amount) {
+    public void deposit(int amount) {
         balance += amount;
     }
 
@@ -35,9 +38,8 @@ public class Account {
         return accountType;
     }
 
-    public void setAccountType(Type accountType) {
-        this.accountType = accountType;
+    @Override
+    public String toString() {
+        return  balance + accountType.toString();
     }
-
-
 }

@@ -1,15 +1,15 @@
 package edu.psu.ist261.view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class LogInPanel extends JPanel {
+public class Login extends JPanel {
     JTextField userNameField = new JTextField();
     JPasswordField passwordField = new JPasswordField();
     JButton logInButton = new JButton("Login");
 
-    public LogInPanel() {
+
+    public Login() {
         setBounds(50, 50, 600, 430);
         setLayout(null);
         setVisible(true);
@@ -40,6 +40,10 @@ public class LogInPanel extends JPanel {
         userNameField.setBackground(Color.decode("#DFDFDF"));
         userNameField.setOpaque(true);
         add(userNameField);
+
+
+
+
 
         JLabel passWord = new JLabel("Password:");
         passWord.setForeground(Color.black);

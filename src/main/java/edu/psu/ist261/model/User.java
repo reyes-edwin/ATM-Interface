@@ -1,7 +1,5 @@
 package edu.psu.ist261.model;
 
-import edu.psu.ist261.model.Account;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +8,7 @@ public class User  {
     private String lastName;
     private String uuid;
     private String pinNumber;
-//    private Map<Account.Type, Account> accountMap =new HashMap<>();
-    private Map<Account, Account> account =new HashMap<>();
+    private Map<String, Account> account = new HashMap<>();
 
     public User(String firstName, String lastName, String uuid, String pinNumber) {
         this.firstName = firstName;
@@ -28,29 +25,18 @@ public class User  {
         return lastName;
     }
 
-
-//    public Account getAccount(Account.Type account) {
-//        return accountMap.get(account);
-//    }
-
-
-//    public Map<Account.Type, Account> getAccountMap() {
-//        return accountMap;
-//    }
-
-
-    public Map<Account, Account> getAccountMap() {
+    public Map<String, Account> getAccount() {
         return account;
     }
 
-    public Account getBalance(Account balance) {
-        return this.account.get(balance.getBalance());
+    public void addAccount(Account accounts ) {
+        this.account.put(getUuid(), accounts);
     }
 
-
-    public void addAccount(Account account) {
-        this.account.put(account, account);
+    public Account getAccount(String uuid)  {
+        return this.account.get(uuid);
     }
+
 
     public String getUuid() {
         return uuid;
@@ -60,4 +46,9 @@ public class User  {
         return pinNumber;
     }
 
+
+    @Override
+    public String toString() {
+        return account.toString();
+    }
 }

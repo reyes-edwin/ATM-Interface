@@ -2,21 +2,21 @@ package edu.psu.ist261.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
 
-public class HomePanel extends JPanel {
+
+public class Home extends JPanel {
     JLabel userName = new JLabel();
     JLabel type = new JLabel();
     JButton logout = new JButton("Logout");
     JButton balance = new JButton("Balance");
-    Random randomNumber = new Random();
+    JButton withdraw = new JButton("Withdraw");
+    JButton deposit = new JButton("Deposit");
+    JButton quickCash = new JButton("Quick Cash" );
 
-    public HomePanel() {
+    public Home() {
         setBounds(50, 50, 600, 430);
         setLayout(null);
         setVisible(false);
@@ -51,9 +51,6 @@ public class HomePanel extends JPanel {
         userName.setForeground(Color.BLACK);
         add(userName);
 
-//        Random randomNumber = new Random();
-//        String savingsNumber = String.format("%04d", randomNumber.nextInt(10000));
-
         JLabel description = new JLabel("Please choose a transaction.");
         description.setBounds(175, 69, 200, 16);
         description.setFont(new Font("Helvetica",Font.BOLD | Font.ITALIC, 14));
@@ -67,7 +64,7 @@ public class HomePanel extends JPanel {
         add(quickCashText);
 
 //        Transaction Buttons
-        JButton quickCash = new JButton("Quick Cash" );
+
         quickCash.setBounds(175, 95, 200, 100);
         quickCash.setFont(new Font("Helvetica", Font.BOLD, 20));
         quickCash.setFocusable(false);
@@ -77,7 +74,7 @@ public class HomePanel extends JPanel {
         quickCash.setBorderPainted(false);
         add(quickCash);
 
-        JButton withdraw = new JButton("Withdraw");
+
         withdraw.setBounds(400, 95, 200, 100);
         withdraw.setFont(new Font("Helvetica", Font.BOLD, 20));
         withdraw.setFocusable(false);
@@ -87,7 +84,7 @@ public class HomePanel extends JPanel {
         withdraw.setOpaque(true);
         add(withdraw);
 
-        JButton deposit = new JButton("Deposit");
+
         deposit.setBounds(175, 220, 200, 100);
         deposit.setFont(new Font("Helvetica", Font.BOLD, 20));
         deposit.setFocusable(false);
@@ -125,18 +122,6 @@ public class HomePanel extends JPanel {
         return userName;
     }
 
-    public void setUserName(JLabel userName) {
-        this.userName = userName;
-    }
-
-    public JLabel getType() {
-        return type;
-    }
-
-    public void setType(JLabel type) {
-        this.type = type;
-    }
-
     public JButton getBalance() {
         return balance;
     }
@@ -145,9 +130,15 @@ public class HomePanel extends JPanel {
         return logout;
     }
 
-    public void setLogout(JButton logout) {
-        this.logout = logout;
+    public JButton getWithdraw() {
+        return withdraw;
     }
 
+    public JButton getDeposit() {
+        return deposit;
+    }
 
+    public JButton getQuickCash() {
+        return quickCash;
+    }
 }

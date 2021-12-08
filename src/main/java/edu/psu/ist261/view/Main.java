@@ -11,48 +11,44 @@ public class Main {
         ATMFrame mainFrame = new ATMFrame();
 
         Bank theBank = new Bank("ReyesEmpireBank");
-        User user = new User("Edwin", "Reyes", "ejr5508", "1234");
-        User user1 = new User("John", "Reyes", "jor1234", "1234");
-        Account account = new Account(5029.70, Account.Type.Checking);
-        Account account1 = new Account(10343.34 , Account.Type.Savings);
+        User user1 = new User("Edwin", "Reyes", "ejr5508", "1234");
+        Account account1 = new Account(5000.00, Account.Type.Checking);
+        Account account2 = new Account(1818, Account.Type.Savings);
+        user1.addAccount(account2);
+        user1.addAccount(account1);
 
-        user.addAccount(account);
-        user.addAccount(account1);
-
-        System.out.println(user);
-
-
-
-
-
-
-
-        theBank.addUser(user);
         theBank.addUser(user1);
 
+        System.out.println(user1.getAccount());
 
-//        LogInPanel log = new LogInPanel();
-//        HomePanel homeScreen = new HomePanel();
-//        BalancePanel balance = new BalancePanel();
-//        AccountTypePanel typePanel = new AccountTypePanel();
-//
-//        //create controller
-//        ATMController controller = new ATMController(homeScreen, log, balance, theBank, typePanel);
-//        controller.buttonListener();
-//        controller.logoutListener();
-//        controller.balanceListener();
-//
-//
-//
-//        mainFrame.add(log);
-//        mainFrame.add(homeScreen);
-//        mainFrame.add(balance);
-//        mainFrame.add(typePanel);
-//        mainFrame.setVisible(true);
+        Login log = new Login();
+        Home homeScreen = new Home();
+        GetBalance balance = new GetBalance();
+        BalanceAccountType typePanel = new BalanceAccountType();
+        Withdraw withdraw = new Withdraw();
+        Deposit deposit = new Deposit();
+        WithdrawAccountType withdrawAccountType = new WithdrawAccountType();
+        DepositAccountType depositAccountType = new DepositAccountType();
 
 
 
+        //create controller
+        ATMController controller = new ATMController(homeScreen, log, balance, theBank, typePanel, withdraw, deposit, withdrawAccountType, depositAccountType);
+        controller.buttonListener();
+        controller.logoutListener();
+        controller.balanceListener();
+        controller.withdraw();
+        controller.deposit();
 
+        mainFrame.add(log);
+        mainFrame.add(homeScreen);
+        mainFrame.add(balance);
+        mainFrame.add(typePanel);
+        mainFrame.add(withdraw);
+        mainFrame.add(deposit);
+        mainFrame.add(withdrawAccountType);
+        mainFrame.add(depositAccountType);
+        mainFrame.setVisible(true);
     }
 
 }

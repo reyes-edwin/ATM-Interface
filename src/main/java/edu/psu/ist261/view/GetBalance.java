@@ -3,18 +3,16 @@ package edu.psu.ist261.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class BalancePanel extends JPanel {
+public class GetBalance extends JPanel {
     JButton homeBTN = new JButton("Home");
     JLabel accountType = new JLabel();
     JLabel balanceLabel = new JLabel();
 
-
-    public BalancePanel() {
+    public GetBalance() {
         setBounds(50, 50, 600, 430);
         setLayout(null);
         setVisible(false);
         setBackground(Color.decode("#ffffff"));
-
 
         JLabel title = new JLabel("ReyesATM");
         title.setBounds(478, 0, 132, 28);

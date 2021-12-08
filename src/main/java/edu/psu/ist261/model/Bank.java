@@ -6,7 +6,6 @@ import java.util.Map;
 public class Bank {
     private String bankName;
     private Map<String, User> userMap = new HashMap<>();
-    private Map<Double, Account> accountMap = new HashMap<>();
 
     public Bank(String bankName) {
         this.bankName = bankName;
@@ -14,10 +13,6 @@ public class Bank {
 
     public void addUser(User user) {
         this.userMap.put(user.getUuid(), user);
-    }
-
-    public void addAccountBalance(Account account) {
-        this.accountMap.put(account.getBalance(), account);
     }
 
     public String getBankName() {
@@ -28,8 +23,13 @@ public class Bank {
         return userMap.get(uuid);
     }
 
+
     public Map<String, User> getUserMap() {
         return userMap;
     }
 
+    @Override
+    public String toString() {
+        return userMap.toString();
+    }
 }
