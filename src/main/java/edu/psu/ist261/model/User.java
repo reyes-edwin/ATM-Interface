@@ -46,6 +46,10 @@ public class User  {
         return pinNumber;
     }
 
+    public String getFullName() {
+        return this.getFirstName() + " " + getLastName();
+    }
+
 
     @Override
     public String toString() {

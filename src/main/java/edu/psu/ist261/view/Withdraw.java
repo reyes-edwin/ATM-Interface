@@ -158,4 +158,13 @@ public class Withdraw extends JPanel {
         return type;
     }
 
+    public int confirmWithDrawMessage(String amount) {
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to withdraw $ " + amount, "Confirmation", JOptionPane.YES_NO_OPTION);
+        return results;
+    }
+
+    public void amountWithdrewConfirmation(String amount) {
+         JOptionPane.showMessageDialog(this, "$" + amount + " has been withdraw from checking.", "Confirmation", JOptionPane.DEFAULT_OPTION);
+    }
+
 }

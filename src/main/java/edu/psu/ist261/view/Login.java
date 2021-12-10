@@ -8,7 +8,6 @@ public class Login extends JPanel {
     JPasswordField passwordField = new JPasswordField();
     JButton logInButton = new JButton("Login");
 
-
     public Login() {
         setBounds(50, 50, 600, 430);
         setLayout(null);
@@ -41,10 +40,6 @@ public class Login extends JPanel {
         userNameField.setOpaque(true);
         add(userNameField);
 
-
-
-
-
         JLabel passWord = new JLabel("Password:");
         passWord.setForeground(Color.black);
         passWord.setBounds(130, 203, 106, 40);
@@ -57,29 +52,24 @@ public class Login extends JPanel {
         add(passwordField);
 
     }
-
     public JTextField getUserNameField() {
         return userNameField;
-    }
-
-    public void setUserNameField(JTextField userNameField) {
-        this.userNameField = userNameField;
     }
 
     public JPasswordField getPasswordField() {
         return passwordField;
     }
 
-    public void setPasswordField(JPasswordField passwordField) {
-        this.passwordField = passwordField;
-    }
-
     public JButton getLogInButton() {
         return logInButton;
     }
 
-    public void setLogInButton(JButton logInButton) {
-        this.logInButton = logInButton;
+    public void displayNoUserExist() {
+        JOptionPane.showMessageDialog(this, "The user does not exist", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayIncorrectCredentials() {
+        JOptionPane.showMessageDialog(this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
 }

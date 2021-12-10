@@ -141,4 +141,14 @@ public class Home extends JPanel {
     public JButton getQuickCash() {
         return quickCash;
     }
+
+    public int displayConfirmLogout() {
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        return results;
+    }
+
+    public int displayQuickCashMessage() {
+        int results = JOptionPane.showConfirmDialog(this, "Are you suren you want to withdraw $50 from checking?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        return results;
+    }
 }
