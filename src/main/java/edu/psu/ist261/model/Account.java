@@ -8,7 +8,6 @@ public class Account {
         Savings,
         Checking
     }
-
     private double balance;
     private Type accountType;
 
@@ -18,11 +17,7 @@ public class Account {
     }
 
     public double withdraw(double amount) {
-        if (amount > balance) {
-            JOptionPane.showMessageDialog(null, "Insufficient amount", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            balance -= amount;
-        }
+        balance -= amount;
         return amount;
     }
 

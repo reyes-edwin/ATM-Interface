@@ -23,13 +23,7 @@ public class Bank {
         return userMap.get(uuid);
     }
 
-
     public Map<String, User> getUserMap() {
         return userMap;
-    }
-
-    @Override
-    public String toString() {
-        return userMap.toString();
     }
 }
