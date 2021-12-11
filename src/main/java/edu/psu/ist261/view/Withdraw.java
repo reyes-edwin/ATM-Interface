@@ -16,8 +16,6 @@ public class Withdraw extends JPanel {
     private JButton other = new JButton("other");
     JLabel type = new JLabel();
 
-
-
     public Withdraw() {
         setBounds(50, 50, 600, 430);
         setLayout(null);
@@ -125,7 +123,6 @@ public class Withdraw extends JPanel {
 
     }
 
-
     public JButton getHomeBTN() {
         return homeBTN;
     }
@@ -158,13 +155,29 @@ public class Withdraw extends JPanel {
         return type;
     }
 
-    public int confirmWithDrawMessage(String amount) {
-        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to withdraw $ " + amount, "Confirmation", JOptionPane.YES_NO_OPTION);
+    public int confirmWithdrawMessage(String amount) {
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to withdraw $" + amount, "Confirmation", JOptionPane.YES_NO_OPTION);
         return results;
     }
 
     public void amountWithdrewConfirmation(String amount) {
-         JOptionPane.showMessageDialog(this, "$" + amount + " has been withdraw from checking.", "Confirmation", JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(this, "$" + amount + " has been withdraw.", "Confirmation", JOptionPane.DEFAULT_OPTION);
     }
 
+    public String displayInput() {
+        String input = JOptionPane.showInputDialog(this, "Please enter an amount", "Withdraw", JOptionPane.OK_CANCEL_OPTION);
+        return input;
+    }
+
+    public void displayErrorMessage() {
+        JOptionPane.showMessageDialog(this, "Please enter a valid amount", "Error", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public void confirmationMessage(String amount) {
+        JOptionPane.showMessageDialog(this, "$" + amount + " has been withdraw.", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayInsufficientAmount() {
+        JOptionPane.showMessageDialog(this, "Insufficient Amount", "Error", JOptionPane.ERROR_MESSAGE);
+    }
 }

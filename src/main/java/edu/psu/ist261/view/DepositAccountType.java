@@ -80,4 +80,9 @@ public class DepositAccountType extends JPanel {
     public JButton getSavings() {
         return savings;
     }
+
+    public void displayErrorMessage() {
+        JOptionPane.showMessageDialog(this, "You do not have a savings account.", "Error", JOptionPane.WARNING_MESSAGE);
+    }
+
 }

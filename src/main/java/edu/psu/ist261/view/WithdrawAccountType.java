@@ -74,23 +74,16 @@ public class WithdrawAccountType extends JPanel {
         return homeBTN;
     }
 
-    public void setHomeBTN(JButton homeBTN) {
-        this.homeBTN = homeBTN;
-    }
-
     public JButton getChecking() {
         return checking;
-    }
-
-    public void setChecking(JButton checking) {
-        this.checking = checking;
     }
 
     public JButton getSavings() {
         return savings;
     }
 
-    public void setSavings(JButton savings) {
-        this.savings = savings;
+    public void displayErrorMessage() {
+        JOptionPane.showMessageDialog(this, "You do not have a savings account.", "Error", JOptionPane.WARNING_MESSAGE);
     }
+
 }

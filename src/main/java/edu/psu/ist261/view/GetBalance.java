@@ -30,7 +30,7 @@ public class GetBalance extends JPanel {
         add(homeBTN);
 
         JLabel accountText = new JLabel("Account: ");
-        accountText.setBounds(211, 184, 97  , 23);
+        accountText.setBounds(211, 184, 97, 23);
         accountText.setFont(new Font("Helvetica", Font.PLAIN, 20));
         accountText.setForeground(Color.black);
         add(accountText);
@@ -61,23 +61,11 @@ public class GetBalance extends JPanel {
         return homeBTN;
     }
 
-    public void setHomeBTN(JButton homeBTN) {
-        this.homeBTN = homeBTN;
-    }
-
     public JLabel getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(JLabel accountType) {
-        this.accountType = accountType;
-    }
-
     public JLabel getBalanceLabel() {
         return balanceLabel;
-    }
-
-    public void setBalanceLabel(JLabel balanceLabel) {
-        this.balanceLabel = balanceLabel;
     }
 }

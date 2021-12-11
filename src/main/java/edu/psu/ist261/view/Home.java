@@ -6,15 +6,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-
 public class Home extends JPanel {
     JLabel userName = new JLabel();
-    JLabel type = new JLabel();
     JButton logout = new JButton("Logout");
     JButton balance = new JButton("Balance");
     JButton withdraw = new JButton("Withdraw");
     JButton deposit = new JButton("Deposit");
-    JButton quickCash = new JButton("Quick Cash" );
+    JButton quickCash = new JButton("Quick Cash");
 
     public Home() {
         setBounds(50, 50, 600, 430);
@@ -46,14 +44,14 @@ public class Home extends JPanel {
         welcome.setForeground(Color.black);
         add(welcome);
 
-        userName.setBounds(0, 122, 114, 21);
+        userName.setBounds(0, 122, 130, 21);
         userName.setFont(new Font("Helvetica", Font.BOLD, 18));
         userName.setForeground(Color.BLACK);
         add(userName);
 
         JLabel description = new JLabel("Please choose a transaction.");
         description.setBounds(175, 69, 200, 16);
-        description.setFont(new Font("Helvetica",Font.BOLD | Font.ITALIC, 14));
+        description.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 14));
         description.setForeground(Color.black);
         add(description);
 //
@@ -115,7 +113,6 @@ public class Home extends JPanel {
         logout.setBorderPainted(false);
         logout.setOpaque(true);
         add(logout);
-
     }
 
     public JLabel getUserName() {
@@ -148,7 +145,11 @@ public class Home extends JPanel {
     }
 
     public int displayQuickCashMessage() {
-        int results = JOptionPane.showConfirmDialog(this, "Are you suren you want to withdraw $50 from checking?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to withdraw $50 from checking?", "Confirmation", JOptionPane.YES_NO_OPTION);
         return results;
+    }
+
+    public void quickCashConfirmation() {
+        JOptionPane.showMessageDialog(this, "$50 has been withdrew!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
     }
 }

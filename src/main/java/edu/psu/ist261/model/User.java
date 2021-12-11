@@ -25,18 +25,13 @@ public class User  {
         return lastName;
     }
 
-    public Map<String, Account> getAccount() {
-        return account;
-    }
-
     public void addAccount(Account accounts ) {
         this.account.put(getUuid(), accounts);
     }
 
-    public Account getAccount(String uuid)  {
+    public Account getAccountID(String uuid)  {
         return this.account.get(uuid);
     }
-
 
     public String getUuid() {
         return uuid;
@@ -50,9 +45,7 @@ public class User  {
         return this.getFirstName() + " " + getLastName();
     }
 
-
-    @Override
-    public String toString() {
-        return account.toString();
+    public Map<String, Account> getAccount() {
+        return account;
     }
 }

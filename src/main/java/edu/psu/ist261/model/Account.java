@@ -1,13 +1,12 @@
 package edu.psu.ist261.model;
 
-import javax.swing.*;
-
 public class Account {
-
+//    Users account type
     public enum Type {
         Savings,
         Checking
     }
+
     private double balance;
     private Type accountType;
 
@@ -31,10 +30,5 @@ public class Account {
 
     public Type getAccountType() {
         return accountType;
-    }
-
-    @Override
-    public String toString() {
-        return  balance + accountType.toString();
     }
 }

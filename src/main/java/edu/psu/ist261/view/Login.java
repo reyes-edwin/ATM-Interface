@@ -52,6 +52,7 @@ public class Login extends JPanel {
         add(passwordField);
 
     }
+
     public JTextField getUserNameField() {
         return userNameField;
     }

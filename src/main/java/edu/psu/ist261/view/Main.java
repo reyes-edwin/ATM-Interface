@@ -10,6 +10,13 @@ public class Main {
         //create frame
         ATMFrame mainFrame = new ATMFrame();
 
+//        creates a user and account and add it to the bank.
+        Bank theBank = new Bank("ReyesEmpireBank");
+        Account account1 = new Account(5000.00, Account.Type.Checking);
+        User user1 = new User("Edwin", "Reyes", "ejr5508", "1234");
+        user1.addAccount(account1);
+        theBank.addUser(user1);
+
 //        Create Jpanels
         Login log = new Login();
         Home homeScreen = new Home();
@@ -20,24 +27,16 @@ public class Main {
         WithdrawAccountType withdrawAccountType = new WithdrawAccountType();
         DepositAccountType depositAccountType = new DepositAccountType();
 
-        Bank theBank = new Bank("ReyesEmpireBank");
-        Account account1 = new Account(5000.00, Account.Type.Checking);
-        User user1 = new User("Edwin", "Reyes", "ejr5508", "1234");
-        user1.addAccount(account1);
-        theBank.addUser(user1);
-
         //create controller
         ATMController controller = new ATMController(homeScreen, log, balance, theBank, typePanel, withdraw, deposit, withdrawAccountType, depositAccountType);
         controller.logIn();
         controller.logout();
         controller.quickCash();
         controller.withdraw();
+        controller.deposit();
+        controller.checkBalance();
 
-//        controller.buttonListener();
-//        controller.logoutListener();
-//        controller.balanceListener();
-//        controller.deposit();
-
+//        adding panels to the frame
         mainFrame.add(log);
         mainFrame.add(homeScreen);
         mainFrame.add(balance);

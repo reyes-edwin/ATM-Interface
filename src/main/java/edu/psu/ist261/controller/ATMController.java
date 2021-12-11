@@ -1,10 +1,9 @@
 package edu.psu.ist261.controller;
 
+import edu.psu.ist261.model.Account;
 import edu.psu.ist261.model.Bank;
 import edu.psu.ist261.model.User;
 import edu.psu.ist261.view.*;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -78,11 +77,9 @@ public class ATMController {
 
                 int results = homeView.displayQuickCashMessage();
                 if (results == 0) {
-                    user.getAccount(userName).withdraw(50);
-                    System.out.println(user.getAccount(userName).getBalance());
+                    user.getAccountID(userName).withdraw(50);
+                    homeView.quickCashConfirmation();
                 }
-
-
             }
         });
     }
@@ -104,7 +101,7 @@ public class ATMController {
 
                 withdrawAccountType.setVisible(false);
                 withdraw.setVisible(true);
-                withdraw.getType().setText(user.getAccount(userName).getAccountType().toString());
+                withdraw.getType().setText(user.getAccountID(userName).getAccountType().toString());
             }
 
 
@@ -113,255 +110,186 @@ public class ATMController {
         withdrawAccountType.getSavings().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
 
+//                Checks if user has a savings account
+                if (!user.getAccountID(uuid).getAccountType().equals(Account.Type.Savings)) {
+                    withdrawAccountType.displayErrorMessage();
+                }
             }
         });
 
         withdraw.getTwenty().addActionListener(e -> {
-            int results = withdraw.confirmWithDrawMessage(withdraw.getTwenty().getText());
+            int results = withdraw.confirmWithdrawMessage(withdraw.getTwenty().getText());
 
             if (results == 0) {
                 withdraw.amountWithdrewConfirmation(withdraw.getTwenty().getText());
                 String uuid = loginView.getUserNameField().getText();
                 User user = bank.getUser(uuid);
-                user.getAccount(uuid).withdraw(Integer.parseInt(withdraw.getTwenty().getText()));
+                user.getAccountID(uuid).withdraw(Integer.parseInt(withdraw.getTwenty().getText()));
             }
         });
 
+        withdraw.getForty().addActionListener(e -> {
+            int results = withdraw.confirmWithdrawMessage(withdraw.getForty().getText());
 
-//        withdraw.getOther().addActionListener(e -> {
-//            String m = JOptionPane.showInputDialog("Please enter an amount.", JOptionPane.OK_OPTION);
-//            if (m.isEmpty()) {
-//                JOptionPane.showMessageDialog(withdraw, "Please enter amount", "Error Message", JOptionPane.ERROR_MESSAGE);
-//            } else {
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(Integer.parseInt(m));
-//            }
-//        });
-//    }
+            if (results == 0) {
+                withdraw.amountWithdrewConfirmation(withdraw.getForty().getText());
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
+                user.getAccountID(uuid).withdraw(Integer.parseInt(withdraw.getForty().getText()));
+            }
+        });
+
+        withdraw.getSixty().addActionListener(e -> {
+            int results = withdraw.confirmWithdrawMessage(withdraw.getSixty().getText());
+
+            if (results == 0) {
+                withdraw.amountWithdrewConfirmation(withdraw.getSixty().getText());
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
+                user.getAccountID(uuid).withdraw(Integer.parseInt(withdraw.getSixty().getText()));
+            }
+        });
+
+        withdraw.getEighty().addActionListener(e -> {
+            int results = withdraw.confirmWithdrawMessage(withdraw.getEighty().getText());
+
+            if (results == 0) {
+                withdraw.amountWithdrewConfirmation(withdraw.getEighty().getText());
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
+                user.getAccountID(uuid).withdraw(Integer.parseInt(withdraw.getEighty().getText()));
+            }
+        });
+
+        withdraw.getOneHundred().addActionListener(e -> {
+            int results = withdraw.confirmWithdrawMessage(withdraw.getOneHundred().getText());
+
+            if (results == 0) {
+                withdraw.amountWithdrewConfirmation(withdraw.getOneHundred().getText());
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
+                user.getAccountID(uuid).withdraw(Integer.parseInt(withdraw.getOneHundred().getText()));
+            }
+        });
+
+        withdraw.getOther().addActionListener(e -> {
+            try {
+                String uuid = loginView.getUserNameField().getText();
+                User user = bank.getUser(uuid);
+
+                String results = withdraw.displayInput();
+
+                if (Integer.parseInt(results) > 0 && Integer.parseInt(results) > user.getAccountID(uuid).getBalance()) {
+                    withdraw.displayInsufficientAmount();
+                } else {
+                    user.getAccountID(uuid).withdraw(Integer.parseInt(results));
+                    withdraw.confirmationMessage(results);
+                    withdraw.setVisible(false);
+                    homeView.setVisible(true);
+                }
+            } catch (NumberFormatException | NullPointerException ex) {
+            }
+        });
+
+        withdrawAccountType.getHomeBTN().addActionListener(e -> {
+            withdrawAccountType.setVisible(false);
+            homeView.setVisible(true);
+        });
+
+        withdraw.getHomeBTN().addActionListener(e -> {
+            withdraw.setVisible(false);
+            homeView.setVisible(true);
+        });
     }
 
-//
-//    public void balanceListener() {
-//        homeView.getBalance().addActionListener(e -> {
-//            homeView.setVisible(false);
-//            balanceAccountType.setVisible(true);
-//
-//            balanceAccountType.getChecking().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    balanceAccountType.setVisible(false);
-//                    balance.setVisible(true);
-//                    String uuid = loginView.getUserNameField().getText();
-//                    User user = bank.getUser(uuid);
-//                    double amount = bank.getUserMap().get(user.getUuid()).getAccount().get(user.getUuid()).getBalance();
-//                    balance.getAccountType().setText(bank.getUserMap().get(user.getUuid()).getAccount().get(user.getUuid()).getAccountType().toString());
-//                    balance.getBalanceLabel().setText(String.valueOf(amount));
-//                }
-//            });
-//
-//            balanceAccountType.getSavings().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    String uuid = loginView.getUserNameField().getText();
-//                    User user = bank.getUser(uuid);
-//                    if (!bank.getUserMap().get(user.getUuid()).getAccount().get(user.getUuid()).getAccountType().equals(Account.Type.Savings)) {
-//                        JOptionPane.showMessageDialog(balanceAccountType, "You do not have a Savings account", "Error Message", JOptionPane.ERROR_MESSAGE);
-//                    } else {
-//                        balanceAccountType.setVisible(false);
-//                        balance.setVisible(true);
-//                        double amount = bank.getUserMap().get(user.getUuid()).getAccount().get(user.getUuid()).getBalance();
-//                        balance.getAccountType().setText(bank.getUserMap().get(user.getUuid()).getAccount().get(user.getUuid()).getAccountType().toString());
-//                        balance.getBalanceLabel().setText(String.valueOf(amount));
-//                    }
-//                }
-//            });
-//
-//            balanceAccountType.getHomeBTN().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    balanceAccountType.setVisible(false);
-//                    homeView.setVisible(true);
-//                }
-//            });
-//        });
-//
-//        balance.getHomeBTN().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                balance.setVisible(false);
-//                homeView.setVisible(true);
-//            }
-//        });
-//
-//    }
-//
-//    public void withdraw() {
-//        homeView.getWithdraw().addActionListener(e -> {
-//            homeView.setVisible(false);
-//            withdrawAccountType.setVisible(true);
-//
-//            withdrawAccountType.getChecking().addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    withdrawAccountType.setVisible(false);
-//                    withdraw.setVisible(true);
-//                    String uuid = loginView.getUserNameField().getText();
-//                    User user = bank.getUser(uuid);
-//                    withdraw.getType().setText(user.getAccount(uuid).getAccountType().toString());
-//                }
-//            });
-//
-//        });
-//
-//        withdraw.getTwenty().addActionListener(e -> {
-//            int results = JOptionPane.showConfirmDialog(withdraw, "Are you sure you want withdraw $20", "Confirmation",
-//                    JOptionPane.YES_NO_OPTION);
-//
-//            if (results == JOptionPane.YES_OPTION) {
-//                JOptionPane.showConfirmDialog(withdraw, "$20 has been withdrawn", "Confirmation", JOptionPane.DEFAULT_OPTION);
-//                int amount = Integer.parseInt(withdraw.getTwenty().getText());
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(amount);
-//            }
-//        });
-//
-//        withdraw.getForty().addActionListener(e -> {
-//            int results = JOptionPane.showConfirmDialog(withdraw, "Are you sure you want withdraw $40", "Confirmation",
-//                    JOptionPane.YES_NO_OPTION);
-//
-//            if (results == JOptionPane.YES_OPTION) {
-//                JOptionPane.showConfirmDialog(withdraw, "$40 has been withdrawn", "Confirmation", JOptionPane.DEFAULT_OPTION);
-//                int amount = Integer.parseInt(withdraw.getSixty().getText());
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(amount);
-//            }
-//        });
-//
-//        withdraw.getSixty().addActionListener(e -> {
-//            int results = JOptionPane.showConfirmDialog(withdraw, "Are you sure you want withdraw $60", "Confirmation",
-//                    JOptionPane.YES_NO_OPTION);
-//
-//            if (results == JOptionPane.YES_OPTION) {
-//                JOptionPane.showConfirmDialog(withdraw, "$60 has been withdrawn", "Confirmation", JOptionPane.DEFAULT_OPTION);
-//                int amount = Integer.parseInt(withdraw.getSixty().getText());
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(amount);
-//            }
-//        });
-//
-//        withdraw.getEighty().addActionListener(e -> {
-//            int results = JOptionPane.showConfirmDialog(withdraw, "Are you sure you want withdraw $80", "Confirmation",
-//                    JOptionPane.YES_NO_OPTION);
-//
-//            if (results == JOptionPane.YES_OPTION) {
-//                JOptionPane.showConfirmDialog(withdraw, "$80 has been withdrawn", "Confirmation", JOptionPane.DEFAULT_OPTION);
-//                int amount = Integer.parseInt(withdraw.getEighty().getText());
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(amount);
-//            }
-//
-//        });
-//
-//        withdraw.getOneHundred().addActionListener(e -> {
-//            int results = JOptionPane.showConfirmDialog(withdraw, "Are you sure you want withdraw $100", "Confirmation",
-//                    JOptionPane.YES_NO_OPTION);
-//
-//            if (results == JOptionPane.YES_OPTION) {
-//                JOptionPane.showConfirmDialog(withdraw, "$100 has been withdrawn", "Confirmation", JOptionPane.DEFAULT_OPTION);
-//                int amount = Integer.parseInt(withdraw.getOneHundred().getText());
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(amount);
-//            }
-//        });
-//
-//        withdraw.getOther().addActionListener(e -> {
-//            String m = JOptionPane.showInputDialog("Please enter an amount.", JOptionPane.OK_OPTION);
-//            if (m.isEmpty()) {
-//                JOptionPane.showMessageDialog(withdraw, "Please enter amount", "Error Message", JOptionPane.ERROR_MESSAGE);
-//            } else {
-//                String uuid = loginView.getUserNameField().getText();
-//                User a = bank.getUser(uuid);
-//                a.getAccount(uuid).withdraw(Integer.parseInt(m));
-//            }
-//        });
-//
-//        withdraw.getHomeBTN().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                withdraw.setVisible(false);
-//                homeView.setVisible(true);
-//            }
-//        });
-//
-//        withdrawAccountType.getHomeBTN().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                withdrawAccountType.setVisible(false);
-//                homeView.setVisible(true);
-//            }
-//        });
-//    }
-//
-//    public void deposit() {
-//
-//        homeView.getDeposit().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                homeView.setVisible(false);
-//                depositAccountType.setVisible(true);
-//
-//                depositAccountType.getChecking().addActionListener(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        depositAccountType.setVisible(false);
-//                        deposit.setVisible(true);
-//                    }
-//                });
-//                depositAccountType.getHomeBTN().addActionListener(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        depositAccountType.setVisible(false);
-//                        homeView.setVisible(false);
-//                    }
-//                });
-//
-//                deposit.getSubmit().addActionListener(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        String input = deposit.getUserAmount().getText();
-//                        String userName = loginView.getUserNameField().getText();
-//                        User user = bank.getUser(userName);
-//                        try {
-//                            user.getAccount(userName).deposit(Integer.parseInt(input));
-//                        } catch (NumberFormatException ex) {
-//
-//                        }
-//
-//
-//                    }
-//                });
-//
-//                deposit.getHomeBTN().addActionListener(new ActionListener() {
-//                    @Override
-//                    public void actionPerformed(ActionEvent e) {
-//                        deposit.setVisible(false);
-//                        homeView.setVisible(true);
-//                    }
-//                });
-//            }
-//        });
-//    }
+    public void deposit() {
+        homeView.getDeposit().addActionListener(e -> {
+            depositAccountType.setVisible(true);
+            homeView.setVisible(false);
+        });
 
+        depositAccountType.getChecking().addActionListener(e -> {
+            depositAccountType.setVisible(false);
+            deposit.setVisible(true);
+        });
+
+        depositAccountType.getSavings().addActionListener(e -> {
+            String uuid = loginView.getUserNameField().getText();
+            User user = bank.getUser(uuid);
+
+//                Checks if user has a savings account
+            if (!user.getAccountID(uuid).getAccountType().equals(Account.Type.Savings)) {
+                depositAccountType.displayErrorMessage();
+            }
+        });
+
+        deposit.getSubmit().addActionListener(e -> {
+            String input = deposit.getUserAmount().getText();
+            String userName = loginView.getUserNameField().getText();
+            User user = bank.getUser(userName);
+
+            try {
+                user.getAccountID(userName).deposit(Integer.parseInt(input));
+                deposit.depositConfirmation(input);
+                deposit.getUserAmount().setText("");
+                deposit.setVisible(false);
+                homeView.setVisible(true);
+                System.out.println(user.getAccountID(userName).getBalance());
+            } catch (NumberFormatException ex) {
+                deposit.displayErrorMessage();
+            }
+        });
+
+        depositAccountType.getHomeBTN().addActionListener(e -> {
+            depositAccountType.setVisible(false);
+            homeView.setVisible(true);
+        });
+
+        deposit.getHomeBTN().addActionListener(e -> {
+            deposit.setVisible(false);
+            homeView.setVisible(true);
+        });
+
+    }
+
+    public void checkBalance() {
+        homeView.getBalance().addActionListener(e -> {
+            balanceAccountType.setVisible(true);
+            homeView.setVisible(false);
+        });
+
+        balanceAccountType.getChecking().addActionListener(e -> {
+            balanceAccountType.setVisible(false);
+            balance.setVisible(true);
+
+            String uuid = loginView.getUserNameField().getText();
+            User user = bank.getUser(uuid);
+
+            balance.getAccountType().setText(user.getAccountID(uuid).getAccountType().toString());
+            balance.getBalanceLabel().setText(String.valueOf(Double.valueOf(user.getAccountID(uuid).getBalance())));
+        });
+
+        balanceAccountType.getSavings().addActionListener(e -> {
+            String uuid = loginView.getUserNameField().getText();
+            User user = bank.getUser(uuid);
+
+//                Checks if user has a savings account
+            if (!user.getAccountID(uuid).getAccountType().equals(Account.Type.Savings)) {
+                balanceAccountType.displayErrorMessage();
+            }
+        });
+
+        balanceAccountType.getHomeBTN().addActionListener(e -> {
+            balanceAccountType.setVisible(false);
+            homeView.setVisible(true);
+        });
+
+        balance.getHomeBTN().addActionListener(e -> {
+            balance.setVisible(false);
+            homeView.setVisible(true);
+        });
+    }
 }
-
-
-
-
-

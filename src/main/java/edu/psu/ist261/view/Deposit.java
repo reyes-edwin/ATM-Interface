@@ -1,11 +1,7 @@
 package edu.psu.ist261.view;
 
 import javax.swing.*;
-
 import java.awt.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
@@ -62,7 +58,6 @@ public class Deposit extends JPanel {
         invalidText.setForeground(Color.red);
         add(invalidText);
 
-
         userAmount.setBounds(197, 160, 205, 50);
         userAmount.setForeground(Color.black);
         userAmount.setFont(new Font("Helvetica", Font.PLAIN, 18));
@@ -74,7 +69,7 @@ public class Deposit extends JPanel {
                 try {
                     int i = Integer.parseInt(userAmount.getText());
                     invalidText.setText("");
-                }catch (NumberFormatException e1) {
+                } catch (NumberFormatException e1) {
                     invalidText.setText("Please enter a number");
                 }
             }
@@ -90,9 +85,6 @@ public class Deposit extends JPanel {
         submit.setBorderPainted(false);
         add(submit);
 
-
-
-
     }
 
     public JTextField getUserAmount() {
@@ -105,5 +97,13 @@ public class Deposit extends JPanel {
 
     public JButton getHomeBTN() {
         return homeBTN;
+    }
+
+    public void depositConfirmation(String amount) {
+        JOptionPane.showMessageDialog(this, "$" + amount + " has been deposit", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayErrorMessage() {
+        JOptionPane.showMessageDialog(this, "Please enter a number", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

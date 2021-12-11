@@ -15,10 +15,6 @@ public class Bank {
         this.userMap.put(user.getUuid(), user);
     }
 
-    public String getBankName() {
-        return bankName;
-    }
-
     public User getUser(String uuid) {
         return userMap.get(uuid);
     }
