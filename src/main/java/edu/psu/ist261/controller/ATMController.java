@@ -237,7 +237,6 @@ public class ATMController {
                 deposit.getUserAmount().setText("");
                 deposit.setVisible(false);
                 homeView.setVisible(true);
-                System.out.println(user.getAccountID(userName).getBalance());
             } catch (NumberFormatException ex) {
                 deposit.displayErrorMessage();
             }

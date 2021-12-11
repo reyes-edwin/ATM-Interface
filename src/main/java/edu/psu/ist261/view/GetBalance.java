@@ -49,7 +49,7 @@ public class GetBalance extends JPanel {
         add(balanceText);
 
 
-        balanceLabel.setBounds(305, 222, 86, 23);
+        balanceLabel.setBounds(305, 222, 200, 23);
         balanceLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         balanceLabel.setForeground(Color.black);
         add(balanceLabel);
