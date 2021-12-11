@@ -61,7 +61,7 @@ public class Withdraw extends JPanel {
         accountText.setFont(new Font("Helvetica", Font.PLAIN, 14));
         add(accountText);
 
-        type.setBounds(60, 109, 70, 16);
+        type.setBounds(60, 109, 70, 20 );
         type.setForeground(Color.BLACK);
         type.setFont(new Font("Helvetica", Font.BOLD, 14));
         add(type);
@@ -119,8 +119,6 @@ public class Withdraw extends JPanel {
         other.setBorderPainted(false);
         other.setFont(new Font("Helvetica", Font.BOLD, 18));
         add(other);
-
-
     }
 
     public JButton getHomeBTN() {
