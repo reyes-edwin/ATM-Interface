@@ -7,7 +7,6 @@ To run the program, you will need to have the Java Development Kit (JDK) install
 Once you have the JDK installed, you can clone this repository by running the following command in your terminal:
 
 ```bash
-Copy code
 git clone https://github.com/reyes-edwin/ATM-Interface.git
 ```
 ## Usage
